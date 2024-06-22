@@ -75,3 +75,7 @@
     @apply xc-bg-background xc-text-foreground;
   }
 }
+
+.dark {
+  color-scheme: dark;
+}

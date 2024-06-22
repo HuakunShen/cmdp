@@ -111,7 +111,7 @@ export function RaycastCMDK() {
 
         <div cmdk-raycast-footer="">
           {/* {theme === 'dark' ? <RaycastDarkIcon /> : <RaycastLightIcon />} */}
-          <RaycastLightIcon />
+          <RaycastDarkIcon />
           <button cmdk-raycast-open-trigger="">
             Open Application
             <kbd>↵</kbd>
@@ -280,14 +280,13 @@ export function TerminalIcon() {
   )
 }
 
-export function RaycastLightIcon() {
+export function RaycastLightIcon({ className }: { className?: string }) {
   return (
     <svg
-      width="1024"
-      height="1024"
       viewBox="0 0 1024 1024"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className={className}
     >
       <path
         fillRule="evenodd"
