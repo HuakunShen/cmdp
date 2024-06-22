@@ -8,6 +8,7 @@ import {
 } from "@radix-ui/react-icons"
 import * as Popover from "@radix-ui/react-popover"
 import { Command as CommandPrimitive } from "cmdk"
+import { Command as CmdkCommand } from "cmdk"
 import {
   Command,
   CommandEmpty,
@@ -132,9 +133,15 @@ export function CommandDemo() {
   const [value, setValue] = React.useState("linear")
   const listRef = React.useRef(null)
   return (
-    <Command
+    <CmdkCommand
       className="rounded-lg border shadow-md"
-      onValueChange={(v) => setValue(v)}
+      onValueChange={(v) => {
+        console.log("value", v)
+        setValue(v)
+      }}
+      onSelect={(v) => {
+        console.log("selected", v)
+      }}
     >
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
@@ -172,7 +179,7 @@ export function CommandDemo() {
           </CommandItem>
         </CommandGroup>
       </CommandList>
-      <div className="xc-flex xc-h-8 xc-items-center xc-w-full xc-px-3 xc-justify-between">
+      {/* <div className="xc-flex xc-h-8 xc-items-center xc-w-full xc-px-3 xc-justify-between">
         <GearIcon />
         <button>
           Open Application
@@ -185,7 +192,7 @@ export function CommandDemo() {
           selectedValue={value}
           inputRef={inputRef}
         />
-      </div>
-    </Command>
+      </div> */}
+    </CmdkCommand>
   )
 }

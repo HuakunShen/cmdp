@@ -9,13 +9,14 @@ import { Dialog, DialogContent } from "@/components/ui/dialog"
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive>
->(({ className, ...props }, ref) => (
+>(({ className, onValueChange, ...props }, ref) => (
   <CommandPrimitive
     ref={ref}
     className={cn(
       "xc-flex xc-h-full xc-w-full xc-flex-col xc-overflow-hidden xc-rounded-md xc-bg-popover xc-text-popover-foreground",
       className
     )}
+    onValueChange={onValueChange}
     {...props}
   />
 ))
@@ -39,7 +40,10 @@ const CommandInput = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Input>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
 >(({ className, ...props }, ref) => (
-  <div className="xc-flex xc-items-center xc-border-b xc-px-3" cmdk-input-wrapper="">
+  <div
+    className="xc-flex xc-items-center xc-border-b xc-px-3"
+    cmdk-input-wrapper=""
+  >
     <MagnifyingGlassIcon className="xc-mr-2 xc-h-4 xc-w-4 xc-shrink-0 xc-opacity-50" />
     <CommandPrimitive.Input
       ref={ref}
@@ -60,7 +64,10 @@ const CommandList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <CommandPrimitive.List
     ref={ref}
-    className={cn("xc-max-h-[300px] xc-overflow-y-auto xc-overflow-x-hidden", className)}
+    className={cn(
+      "xc-max-h-[300px] xc-overflow-y-auto xc-overflow-x-hidden",
+      className
+    )}
     {...props}
   />
 ))
@@ -149,5 +156,5 @@ export {
   CommandGroup,
   CommandItem,
   CommandShortcut,
-  CommandSeparator,
+  CommandSeparator
 }
