@@ -2,7 +2,9 @@
 
 This is React component library based on [cmdk](https://github.com/pacocoursey/cmdk) and [ShadCN](https://github.com/shadcn-ui/ui).
 
-ShadCN Command components are used. With some extra features, such as action panel.
+This is pretty much a wrapper and re-export of ShadCN Command Component. The reason I created this library is to make it easier to install and use the components without having to set up ShadCN.
+
+Extra features added, such as action panel.
 
 #### Docs: https://huakunshen.github.io/shadcn-cmdk/
 
