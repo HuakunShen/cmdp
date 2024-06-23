@@ -1,4 +1,4 @@
-export { RaycastCmdKDemo } from "./cmd"
+// export { RaycastCmdKDemo } from "./cmd"
 export {
   Cmd,
   CmdFooter,

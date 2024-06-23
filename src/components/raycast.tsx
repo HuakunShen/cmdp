@@ -11,8 +11,8 @@ import {
   YouTubeIcon,
   RaycastIcon
 } from "./icons"
-import "../raycast.scss"
-import "../globals.scss"
+import "@/css/raycast.scss"
+import "@/css/globals.scss"
 
 export function RaycastCMDK() {
   // const { resolvedTheme: theme } = useTheme()
