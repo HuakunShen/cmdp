@@ -116,7 +116,7 @@ export function RaycastCmdKDemo({ className }: { className?: string }) {
       <CmdFooter>
         <RaycastLightIcon className="xc-w-6 xc-h-6 xc-ml-2" />
         <div className="xc-flex xc-space-x-2">
-          <Button variant={"outline"}>
+          <Button variant="ghost">
             Open Application
             <kbd className="xc-ml-1">↵</kbd>
           </Button>

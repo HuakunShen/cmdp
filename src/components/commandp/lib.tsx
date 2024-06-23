@@ -98,7 +98,7 @@ export function ActionPanel({
   return (
     <Popover open={open} onOpenChange={setOpen} modal>
       <PopoverTrigger asChild>
-        <Button variant="outline">
+        <Button variant="ghost">
           Actions
           <span className="xc-ml-1 xc-flex xc-space-x-0.5">
             <kbd>⌘</kbd>
@@ -128,9 +128,6 @@ export function ActionPanel({
                   }}
                 >
                   {action.label}
-                  {/* {value === action.value ? (
-                    <CheckIcon className={cn("ml-auto h-4 w-4")} />
-                  ) : null} */}
                 </CommandItem>
               ))}
             </CommandGroup>

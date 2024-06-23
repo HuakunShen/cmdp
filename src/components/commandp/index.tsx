@@ -1,4 +1,15 @@
 export { RaycastCmdKDemo } from "./cmd"
+export {
+  Cmd,
+  CmdFooter,
+  CmdEmpty,
+  CmdGroup,
+  CmdInput,
+  CmdItem,
+  CmdList,
+  CmdShortcut,
+  type ActionItemProps
+} from "./lib"
 
 /**
  * ActionPanel
