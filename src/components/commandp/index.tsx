@@ -8,6 +8,8 @@ export {
   CmdItem,
   CmdList,
   CmdShortcut,
+  ActionPanel,
+  CmdVertifcalSeparator,
   type ActionItemProps
 } from "./lib"
 

@@ -1,5 +1,5 @@
 import { ThemeProvider } from "@/components/theme-provider"
-import { RaycastCmdKDemo } from "./components/commandp"
+import { RaycastCmdKDemo } from "./components/commandp/cmd"
 
 function App() {
   return (
