@@ -13,9 +13,6 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "outDir": "dist",
-    "declaration": true,
-    "declarationMap": true,
 
     /* Linting */
     "strict": true,

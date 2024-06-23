@@ -8,8 +8,8 @@ Extra features added, such as action panel.
 
 #### Docs: https://huakunshen.github.io/shadcn-cmdk/
 
-<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-    <img width="600" src="./assets/demo.png" />
+<div style="text-align: center;">
+    <img width="600" src="./assets/demo.png" style="margin: auto;" />
 </div>
 
 ## Components
