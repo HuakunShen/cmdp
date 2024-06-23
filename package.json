@@ -13,7 +13,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && npm run build:docs",
+    "build:docs": "typedoc src/index.ts",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prepare": "husky",
@@ -49,6 +50,7 @@
     "husky": "^9.0.11",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
+    "typedoc": "^0.26.1",
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vite-plugin-dts": "^3.9.1"
