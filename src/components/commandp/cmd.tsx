@@ -1,14 +1,4 @@
 import {
-  Command as CommandPrimitive,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-  CommandShortcut
-} from "@/components/ui/command"
-import {
   Logo,
   LinearIcon,
   FigmaIcon,
@@ -17,43 +7,23 @@ import {
   RaycastIcon
 } from "@/components/icons"
 import React from "react"
-import {
-  ClipboardIcon,
-  FinderIcon,
-  HammerIcon,
-  RaycastLightIcon,
-  StarIcon,
-  WindowIcon
-} from "../raycast"
-import * as Popover from "@radix-ui/react-popover"
+import { ClipboardIcon, HammerIcon, RaycastLightIcon } from "../raycast"
 import { cn } from "@/lib/utils"
+import {
+  CmdFooter,
+  CmdVertifcalSeparator,
+  CmdGroup,
+  CmdInput,
+  CmdList,
+  ActionPanel,
+  CmdEmpty,
+  CmdItem,
+  CmdShortcut,
+  Cmd
+} from "./lib"
+import { Button } from "@/components/ui/button"
 
-export function Item({
-  children,
-  value,
-  keywords,
-  isCommand = false
-}: {
-  children: React.ReactNode
-  value: string
-  keywords?: string[]
-  isCommand?: boolean
-}) {
-  return (
-    <CommandItem
-      value={value}
-      keywords={keywords}
-      onSelect={() => {
-        console.log("Select item", value)
-      }}
-    >
-      {children}
-      <span cmdk-raycast-meta="">{isCommand ? "Command" : "Application"}</span>
-    </CommandItem>
-  )
-}
-
-export function Command({ className }: { className?: string }) {
+export function RaycastCmdKDemo({ className }: { className?: string }) {
   const [value, setValue] = React.useState("linear")
   const inputRef = React.useRef<HTMLInputElement | null>(null)
   const listRef = React.useRef(null)
@@ -63,7 +33,7 @@ export function Command({ className }: { className?: string }) {
   }, [])
 
   return (
-    <CommandPrimitive
+    <Cmd
       className={cn("xc-border-[1px]", className)}
       value={value}
       onValueChange={(v) => {
@@ -71,17 +41,16 @@ export function Command({ className }: { className?: string }) {
         setValue(v)
       }}
     >
-      <div cmdk-raycast-top-shine="" />
-      <CommandInput
+      <CmdInput
         ref={inputRef}
         autoFocus
         placeholder="Search for apps and commands..."
       />
-      <hr cmdk-raycast-loader="" />
-      <CommandList ref={listRef}>
-        <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup heading="Suggestions">
-          <Item value="Linear" keywords={["issue", "sprint"]}>
+      <hr />
+      <CmdList ref={listRef}>
+        <CmdEmpty>No results found.</CmdEmpty>
+        <CmdGroup heading="Suggestions">
+          <CmdItem value="Linear" keywords={["issue", "sprint"]}>
             <Logo>
               <LinearIcon
                 style={{
@@ -91,35 +60,36 @@ export function Command({ className }: { className?: string }) {
               />
             </Logo>
             Linear
-          </Item>
-          <Item value="Figma" keywords={["design", "ui", "ux"]}>
+          </CmdItem>
+          <CmdItem value="Figma" keywords={["design", "ui", "ux"]}>
             <Logo>
               <FigmaIcon />
             </Logo>
             Figma
-          </Item>
-          <Item value="Slack" keywords={["chat", "team", "communication"]}>
+          </CmdItem>
+          <CmdItem value="Slack" keywords={["chat", "team", "communication"]}>
             <Logo>
               <SlackIcon />
             </Logo>
             Slack
-          </Item>
-          <Item value="YouTube" keywords={["video", "watch", "stream"]}>
+            <CmdShortcut>⌘P</CmdShortcut>
+          </CmdItem>
+          <CmdItem value="YouTube" keywords={["video", "watch", "stream"]}>
             <Logo>
               <YouTubeIcon />
             </Logo>
             YouTube
-          </Item>
-          <Item value="Raycast" keywords={["productivity", "tools", "apps"]}>
+            <CmdShortcut>⌘P</CmdShortcut>
+          </CmdItem>
+          <CmdItem value="Raycast" keywords={["productivity", "tools", "apps"]}>
             <Logo>
               <RaycastIcon />
             </Logo>
             Raycast
-          </Item>
-        </CommandGroup>
-        <CommandGroup heading="Commands">
-          <Item
-            isCommand
+          </CmdItem>
+        </CmdGroup>
+        <CmdGroup heading="Commands">
+          <CmdItem
             value="Clipboard History"
             keywords={["copy", "paste", "clipboard"]}
           >
@@ -127,154 +97,44 @@ export function Command({ className }: { className?: string }) {
               <ClipboardIcon />
             </Logo>
             Clipboard History
-          </Item>
-          <Item
-            isCommand
-            value="Import Extension"
-            keywords={["import", "extension"]}
-          >
+          </CmdItem>
+          <CmdItem value="Import Extension" keywords={["import", "extension"]}>
             <Logo>
               <HammerIcon />
             </Logo>
             Import Extension
-          </Item>
-          <Item
-            isCommand
-            value="Manage Extensions"
-            keywords={["manage", "extension"]}
-          >
+          </CmdItem>
+          <CmdItem value="Manage Extensions" keywords={["manage", "extension"]}>
             <Logo>
               <HammerIcon />
             </Logo>
             Manage Extensions
-          </Item>
-        </CommandGroup>
-      </CommandList>
+          </CmdItem>
+        </CmdGroup>
+      </CmdList>
 
-      <div className="xc-flex xc-items-center xc-w-full xc-rounded-b-lg xc-border-t-2 xc-bottom-0 xc-justify-between xc-px-4">
-        <RaycastLightIcon className="xc-w-8 xc-h-8" />
+      <CmdFooter>
+        <RaycastLightIcon className="xc-w-6 xc-h-6 xc-ml-2" />
         <div className="xc-flex xc-space-x-2">
-          <button cmdk-raycast-open-trigger="">
+          <Button variant={"outline"}>
             Open Application
-            <kbd>↵</kbd>
-          </button>
+            <kbd className="xc-ml-1">↵</kbd>
+          </Button>
 
-          <hr className="xc-h-6 xc-w-[1px] xc-bg-muted xc-mt-2 xc-mb-2" />
-
-          <SubCommand
+          <CmdVertifcalSeparator />
+          <ActionPanel
             listRef={listRef}
             selectedValue={value}
             inputRef={inputRef}
-          />
+            actionItems={[
+              { label: "Open Application", value: "open" },
+              { label: "Show in Finder", value: "finder" },
+              { label: "Show Info in Finder", value: "info" },
+              { label: "Add to Favorites", value: "favorites" }
+            ]}
+          ></ActionPanel>
         </div>
-      </div>
-    </CommandPrimitive>
-  )
-}
-
-export function SubCommand({
-  inputRef,
-  listRef,
-  selectedValue
-}: {
-  inputRef: React.RefObject<HTMLInputElement>
-  listRef: React.RefObject<HTMLElement>
-  selectedValue: string
-}) {
-  const [open, setOpen] = React.useState(false)
-
-  React.useEffect(() => {
-    function listener(e: KeyboardEvent) {
-      if (e.key === "k" && e.metaKey) {
-        e.preventDefault()
-        setOpen((o) => !o)
-      }
-    }
-
-    document.addEventListener("keydown", listener)
-
-    return () => {
-      document.removeEventListener("keydown", listener)
-    }
-  }, [])
-
-  React.useEffect(() => {
-    const el = listRef.current
-
-    if (!el) return
-
-    if (open) {
-      el.style.overflow = "hidden"
-    } else {
-      el.style.overflow = ""
-    }
-  }, [open, listRef])
-
-  return (
-    <Popover.Root open={open} onOpenChange={setOpen} modal>
-      <Popover.Trigger
-        cmdk-raycast-subcommand-trigger=""
-        onClick={() => setOpen(true)}
-        aria-expanded={open}
-      >
-        Actions
-        <kbd>⌘</kbd>
-        <kbd>K</kbd>
-      </Popover.Trigger>
-      <Popover.Content
-        side="top"
-        align="end"
-        className="raycast-submenu"
-        sideOffset={16}
-        alignOffset={0}
-        onCloseAutoFocus={(e) => {
-          e.preventDefault()
-          inputRef?.current?.focus()
-        }}
-      >
-        <CommandPrimitive>
-          <CommandList>
-            <CommandGroup heading={selectedValue}>
-              <SubItem shortcut="↵">
-                <WindowIcon />
-                Open Application
-              </SubItem>
-              <SubItem shortcut="⌘ ↵">
-                <FinderIcon />
-                Show in Finder
-              </SubItem>
-              <SubItem shortcut="⌘ I">
-                <FinderIcon />
-                Show Info in Finder
-              </SubItem>
-              <SubItem shortcut="⌘ ⇧ F">
-                <StarIcon />
-                Add to Favorites
-              </SubItem>
-            </CommandGroup>
-          </CommandList>
-          <CommandInput placeholder="Search for actions..." />
-        </CommandPrimitive>
-      </Popover.Content>
-    </Popover.Root>
-  )
-}
-
-export function SubItem({
-  children,
-  shortcut
-}: {
-  children: React.ReactNode
-  shortcut: string
-}) {
-  return (
-    <CommandItem>
-      {children}
-      <div cmdk-raycast-submenu-shortcuts="">
-        {shortcut.split(" ").map((key) => {
-          return <kbd key={key}>{key}</kbd>
-        })}
-      </div>
-    </CommandItem>
+      </CmdFooter>
+    </Cmd>
   )
 }
