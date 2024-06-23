@@ -68,11 +68,11 @@
 
 @layer base {
   * {
-    @apply xc-border-border;
+    @apply border-border;
   }
 
   body {
-    @apply xc-bg-background xc-text-foreground;
+    @apply bg-background text-foreground;
   }
 }
 

@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils"
 import React from "react"
+import { cn } from "@/lib/utils"
 import {
   Command,
   CommandEmpty,
@@ -8,23 +8,16 @@ import {
   CommandItem,
   CommandList
 } from "@/components/ui/command"
-export {
-  CommandGroup as CmdGroup,
-  CommandItem as CmdItem,
-  CommandInput as CmdInput,
-  Command as Cmd,
-  CommandList as CmdList,
-  CommandEmpty as CmdEmpty,
-  CommandShortcut as CmdShortcut
-} from "@/components/ui/command"
+
 import {
   Popover,
   PopoverContent,
   PopoverTrigger
 } from "@/components/ui/popover"
+
 import { Button } from "@/components/ui/button"
 
-export function CmdFooter({
+export function CommandFooter({
   children,
   className
 }: {
@@ -34,7 +27,7 @@ export function CmdFooter({
   return (
     <div
       className={cn(
-        "xc-flex xc-items-center xc-w-full xc-rounded-b-lg xc-border-t-2 xc-bottom-0 xc-justify-between",
+        "flex items-center w-full rounded-b-lg border-t-[1px] bottom-0 justify-between px-1",
         className
       )}
     >
@@ -43,8 +36,8 @@ export function CmdFooter({
   )
 }
 
-export function CmdVertifcalSeparator() {
-  return <hr className="xc-h-6 xc-w-[1px] xc-bg-muted xc-mt-2 xc-mb-2" />
+export function VertifcalSeparator() {
+  return <hr className="h-6 w-[1px] bg-muted mt-2 mb-2" />
 }
 
 export type ActionItemProps = {
@@ -98,9 +91,9 @@ export function ActionPanel({
   return (
     <Popover open={open} onOpenChange={setOpen} modal>
       <PopoverTrigger asChild>
-        <Button variant="ghost">
+        <Button variant="ghost" size="sm">
           Actions
-          <span className="xc-ml-1 xc-flex xc-space-x-0.5">
+          <span className="ml-1 flex space-x-0.5">
             <kbd>⌘</kbd>
             <kbd>K</kbd>
           </span>

@@ -1,13 +1,23 @@
+import "./index.css"
 export {
-  Cmd,
-  CmdFooter,
-  CmdEmpty,
-  CmdGroup,
-  CmdInput,
-  CmdItem,
-  CmdList,
-  CmdShortcut,
+  CommandFooter,
+  VertifcalSeparator,
   ActionPanel,
-  CmdVertifcalSeparator,
+  CommandDemo,
   type ActionItemProps
-} from "./components/commandp/lib"
+} from "./components/cmd"
+export {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList
+} from "@/components/ui/command"
+export {
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from "@/components/ui/popover"
+export { ThemeProvider } from "@/components/theme-provider"
+export { ModeToggle } from "@/components/theme-toggle"

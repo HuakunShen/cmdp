@@ -1,11 +1,15 @@
 import { ThemeProvider } from "@/components/theme-provider"
-import { RaycastCmdKDemo } from "./components/commandp/cmd"
+import { CommandDemo } from "@/components/cmd/demo"
+import { ModeToggle } from "@/components/theme-toggle"
 
 function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="xc-w-full xc-h-screen xc-flex xc-justify-center xc-items-center">
-        <RaycastCmdKDemo className="xc-w-[35em] xc-h-96" />
+      <div className="w-full flex-col h-screen flex justify-center items-center space-y-5">
+        <ModeToggle />
+        <div className="w-[35em] h-[25em]">
+          <CommandDemo />
+        </div>
       </div>
     </ThemeProvider>
   )
